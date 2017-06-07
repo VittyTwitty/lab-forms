@@ -1,0 +1,9 @@
+<form #addForm="ngForm" (submit)="submit($event, addForm)">
+  <input type="text" required name="firstName" [(ngModel)]="addModel.first_name">
+  <input type="text" required name="lastName" [(ngModel)]="addModel.last_name">
+  <input type="email" required #email="ngModel" name="email" [(ngModel)]="addModel.email" appEmailValidation>
+  <p *ngIf="(addForm.submitted || email.touched) && email?.hasError('required')">Email is required</p>
+  <p *ngIf="(addForm.submitted || email.touched) && email?.hasError('email')">Email is not valid</p>
+  <button type="submit">Save</button>
+</form>
+<pre>{{addModel|json}}</pre>
