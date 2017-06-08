@@ -1,0 +1,19 @@
+.ng-valid {
+  border-color: green;
+  padding: 10px;
+
+  background: #ffffff;
+}
+.ng-invalid {
+   border-color: red;
+   padding: 10px;
+
+   background: #ffffff;
+ }
+
+.errors span {
+  display: none;
+}
+.errors span:first-child {
+  display: block;
+}

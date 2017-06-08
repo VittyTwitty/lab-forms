@@ -12,6 +12,7 @@ export function emailValidation(control: AbstractControl): { [key: string]: any 
 
 @Directive({
   selector: '[appEmailValidation]',
+  exportAs: 'myCustomDirective',
   providers: [{provide: NG_VALIDATORS, useExisting: EmailValidationDirective, multi: true}]
 })
 export class EmailValidationDirective implements Validator {

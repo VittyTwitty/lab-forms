@@ -7,12 +7,15 @@ import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.compo
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { FormsModule } from '@angular/forms';
+import { EmailValidDirective, MatchDirective } from './directives/email-valid.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    EmailValidDirective,
+    MatchDirective
   ],
   imports: [
     BrowserModule,

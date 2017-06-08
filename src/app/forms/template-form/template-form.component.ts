@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateFormComponent implements OnInit {
 
+  public data: any = {};
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public saveData($event, form) {
+    $event.preventDefault();
+    console.log(form);
+    console.log(form.value);
   }
 
 }

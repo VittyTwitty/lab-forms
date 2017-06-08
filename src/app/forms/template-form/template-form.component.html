@@ -1,3 +1,28 @@
-<p>
-  template-form works!
-</p>
+<form (submit)="saveData($event, loginForm)" #loginForm="ngForm" name="loginForm" id="loginForm">
+  <p [class.has-error]="(loginForm.submitted || emailInput.touched) && emailInput.invalid">
+    <input [(ngModel)]="data.email"
+           type="email"
+           name="email"
+           placeholder="Email"
+           required
+           appEmailValid
+           #emailInput="ngModel">
+  </p>
+  <p class="errors" *ngIf="(loginForm.submitted || emailInput.touched) && emailInput.invalid">
+    <span *ngIf="emailInput.hasError('required')">This field is required</span>
+    <span *ngIf="emailInput.hasError('pattern')">This field is not valid</span>
+    <span *ngIf="emailInput.hasError('email')">Email is not valid</span>
+    <span *ngIf="emailInput.hasError('minlength')">> 4</span>
+  </p>
+  <p><input [(ngModel)]="data.password" type="password" required minlength="6" name="password" placeholder="Password"
+            #passwordInput="ngModel" appMatch [targetInput]="emailInput"></p>
+  <p class="errors" *ngIf="(loginForm.submitted || passwordInput.touched) && passwordInput.invalid">
+    <span *ngIf="passwordInput.hasError('required')">This field is required</span>
+    <span *ngIf="passwordInput.hasError('pattern')">This field is not valid</span>
+    <span *ngIf="passwordInput.hasError('minlength')">> 4</span>
+    <span *ngIf="passwordInput.hasError('match')">error</span>
+  </p>
+</form>
+<pre>{{ data|json }}</pre>
+
+<button type="submit" form="loginForm">Some action</button>

@@ -3,11 +3,12 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { User } from './user.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UsersService {
 
-  private userSubject = new Subject<User[]>();
+  private userSubject = new BehaviorSubject<User[]>([]);
 
   private usersList: User[] = [
     new User({first_name: 'John', last_name: 'Doe', email: 'joe@example.com'})
