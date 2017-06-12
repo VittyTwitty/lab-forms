@@ -6,7 +6,7 @@ import { TemplateFormComponent } from './forms/template-form/template-form.compo
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmailValidDirective, MatchDirective } from './directives/email-valid.directive';
 
 @NgModule({
@@ -20,7 +20,8 @@ import { EmailValidDirective, MatchDirective } from './directives/email-valid.di
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,47 @@
-<p>
-  reactive-form works!
-</p>
+<form [formGroup]="form" (submit)="submit($event)" #formRef="ngForm">
+  <label for="email">
+    email
+    <input id="email" [formControl]="form.get('email')" type="email">
+    <p *ngIf="form.get('email').invalid && (form.get('email').touched || formRef.submitted)">
+      {{ form.get('email').errors |json}}
+    </p>
+  </label>
+  <label for="password">password <input id="password" formControlName="password" type="password">
+    <p *ngIf="form.get('password').invalid && (form.get('password').touched || formRef.submitted)">
+      {{ form.get('password').errors|json }}
+    </p>
+
+  </label>
+  <label for="password">password_confirm <input id="password_confirm" formControlName="password_confirm" type="password">
+    <p *ngIf="form.get('password_confirm').invalid && (form.get('password_confirm').touched || formRef.submitted)">
+      {{ form.get('password_confirm').errors|json }}
+    </p>
+
+  </label>
+  <div formGroupName="address">
+    <label for="street">street <input id="street" formControlName="street" type="text"></label>
+    <label for="city" *ngIf="showCity == true">city <input id="city" formControlName="city" type="text"></label>
+    <!--<p>
+      {{ form.get('address').get('street').errors|json }}
+    </p>-->
+    <p *ngIf="showCity == true">
+      {{ form.get('address').get('city').errors|json }}
+    </p>
+  </div>
+
+  <div *ngFor="let invite of inviteArray.controls" [formGroup]="invite">
+    <label for="name">
+      name
+      <input id="name" formControlName="name" type="email">
+      <p *ngIf="invite.get('name').invalid && (invite.get('name').touched || formRef.submitted)">
+        {{ invite.get('name').errors |json}}
+      </p>
+    </label>
+  </div>
+
+  <button type="submit">Save</button>
+</form>
+<pre>{{ form.value |json }}</pre>
+<button (click)="toggleCity()">Toggle city</button>
+<button (click)="setValue()">set value</button>
+<button (click)="addNewInvite()">add form item</button>
